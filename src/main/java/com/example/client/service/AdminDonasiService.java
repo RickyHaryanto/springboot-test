@@ -17,6 +17,9 @@ public class AdminDonasiService {
 	public List listAll() {
 		return repo.findAllMember();
 	}
+	public List daftar() {
+		return repo.daftarumat();
+	}
 
 	public Donasi get(long donasi_id) {
 		return repo.findById(donasi_id).get();

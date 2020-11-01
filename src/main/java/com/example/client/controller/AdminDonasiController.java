@@ -51,11 +51,14 @@ public class AdminDonasiController {
 		return "/admin/list_donasi";
 	}
 
-    @RequestMapping("/admin/donasi.html")
+ 	 @RequestMapping("/admin/donasi.html")
 	public String showNewDonasiPage(Model model) {
 		Donasi donasi = new Donasi();
 		model.addAttribute("donasi", donasi);
-		
+
+		List daftarumat = service.daftar();
+		model.addAttribute("daftarumat", daftarumat);
+
 		return "/admin/donasi";
     }
     

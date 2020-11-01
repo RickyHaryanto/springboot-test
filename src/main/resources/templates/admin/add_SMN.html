@@ -118,7 +118,14 @@
                 </div>
                 <div class="card-body table-responsive">
                   <Form action="#" th:action="@{/adminsave_smn}" th:object="${smn}" method="post">
-                    User ID: <input type="text" class="form-control" id="formGroupExampleInput" placeholder="" th:field="*{user_id}">
+                     ID Umat:
+					 <div> 
+                      <select class="form-control"  th:field="*{user_id}">
+                        <option th:each="daftar : ${daftarumat}" th:value="${daftar[0]}">
+                          <p th:text="'ID Umat ='+${daftar[0]}"></p>
+                        </option>
+                      </select>
+					</div>
                     <br>
                     Nilai Dharma: <input type="number" class="form-control" id="formGroupExampleInput" placeholder="" th:field="*{smn_dharma}">
                     <br>

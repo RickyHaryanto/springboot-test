@@ -20,7 +20,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import com.example.client.model.SMN;
-
+import com.example.client.repository.AdminSMNRepository;
 import com.example.client.model.Notif;
 import com.example.client.service.AdminSMNService;
 import com.example.client.repository.AdminNotifRepository;
@@ -40,6 +40,8 @@ public class AdminSMNController {
 	private AdminNotifRepository notifrepo;
 	@Autowired
 	private AdminUserService service2;
+	@Autowired
+	private AdminSMNRepository repo;
 
 	int currentID = 0;
 	
@@ -52,11 +54,16 @@ public class AdminSMNController {
 		return "/admin/list_nilai";
 	}
 
-    @RequestMapping("/admin/add_SMN.html")
+   @RequestMapping("/admin/add_SMN.html")
 	public String showNewSMNPage(Model model) {
 		SMN smn = new SMN();
 		model.addAttribute("smn", smn);
 		currentID=0;
+
+		
+		List daftarumat = repo.daftarumat();
+		model.addAttribute("daftarumat", daftarumat);
+
 		return "/admin/add_SMN";
     }
     
